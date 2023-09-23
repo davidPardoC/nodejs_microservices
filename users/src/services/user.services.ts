@@ -14,6 +14,10 @@ export class UserServices{
         return created_user
     }
 
+    async getUserByEmail(email:string){
+        return this.userModel.findOne({email})
+    }
+
     async getAllUsers(){
         return this.userModel.find()
     }

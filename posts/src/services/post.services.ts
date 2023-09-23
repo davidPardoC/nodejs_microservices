@@ -9,8 +9,8 @@ export class PostServices {
         return this.postRepository.find()
     }
 
-    async createPost(content:string, title:string){
-        const createdPost = await this.postRepository.save({content, title,  author: "some-author"})
+    async createPost(content:string, title:string, userId:string){
+        const createdPost = await this.postRepository.save({content, title,  author: userId})
         return createdPost
     }
 }

@@ -21,7 +21,8 @@ router.get("", async (_, res:Response, next:NextFunction)=>{
 router.post("", async (req:Request, res:Response, next:NextFunction)=>{
     try {
         const {content, title} = req.body
-        const posts = await postServices.createPost(content, title)
+        const userId = req.get("x-user-id") as string
+        const posts = await postServices.createPost(content, title, userId)
         res.json(posts)
     } catch (error) {
         next(error)

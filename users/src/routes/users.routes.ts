@@ -34,4 +34,15 @@ router.get("/:id", async (req:Request, res:Response, next:NextFunction)=>{
    }
 })
 
+
+router.get("/email/:email", async (req:Request, res:Response, next:NextFunction)=>{
+    try {
+     const {email} = req.params
+     const user = await userServices.getUserByEmail(email)
+     res.json(user)
+    } catch (error) {
+         next(error)
+    }
+ })
+
 export {router as userRouter}

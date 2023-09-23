@@ -1,10 +1,18 @@
-import { Response, Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
+import { AuthServices } from "../services/auth.services";
 
 const router = Router()
+const authServices = new AuthServices()
 
-router.get("/status", (_, res:Response)=>{
-    res.json({status:"ok from auth_ms"})
+router.post("/login", async (req: Request, res: Response, next:NextFunction) => {
+    try {
+        const { email, password } = req.body
+        const token = await authServices.loginUser(email, password)
+        res.json(token)
+    } catch (error) {
+        next(error)
+    }
 })
 
 
-export {router as authRouter}
+export { router as authRouter }
