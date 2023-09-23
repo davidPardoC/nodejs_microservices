@@ -1,0 +1,30 @@
+version: '3.2'
+
+services:
+  mongo:
+    container_name: mongo_local_db
+    image: mongo
+    ports:
+      - 27017:27017
+    
+  postgres:
+    container_name: postgres_local_db
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  rabbit_mq:
+    container_name: rabbit_mq_local
+    image: rabbitmq:3.12-management
+    ports:
+      - 15672:15672
+      - 5672:5672

@@ -1,0 +1,47 @@
+version: '3.2'
+
+services:
+
+  gateway:
+    container_name: gateway_ms
+    build: ./gateway
+    links:
+      - users
+      - posts
+    ports:
+      - 8080:3000
+    env_file:
+      - ./gateway/.env
+
+  users:
+    container_name: users_ms
+    build: ./users
+    links:
+      - mongo
+    env_file:
+      - ./users/.env
+
+  posts:
+    container_name: posts_ms
+    build: ./posts
+    links:
+     - postgres
+    env_file:
+      - ./posts/.env
+  
+  mongo:
+    container_name: mongo_ms
+    image: mongo
+    
+  postgres:
+    container_name: postgres_ms
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+  rabbit_mq:
+    container_name: rabbit_mq
+    image: rabbitmq:3.12-management
+    ports:
+      - 15672:15672
