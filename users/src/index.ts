@@ -3,6 +3,7 @@ import { connectMongoDatabase } from './database/mongo'
 import "dotenv/config"
 import { userRouter } from './routes/users.routes'
 import morgan from 'morgan'
+import { connectToQueue } from './queue/rabbitmq'
 
 const app = express()
 const PORT = process.env.PORT || 5500
@@ -18,6 +19,7 @@ app.use("/", userRouter)
 
 export const startServer = async () => {
     await connectMongoDatabase()
+    await connectToQueue()
     app.listen(PORT, () => {
         console.log(`Server is listening on port ${PORT}`)
     })

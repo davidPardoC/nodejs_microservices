@@ -9,3 +9,5 @@ export const isPostProtectedRoute = (path: string = '', method: string) => {
     }
     return true
 }
+
+

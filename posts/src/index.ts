@@ -3,6 +3,7 @@ import "dotenv/config"
 import "reflect-metadata"
 import { PostRouter } from './routes/post.routes'
 import { connectDatabase } from './database/postgres'
+import { connectToQueue } from './queue/rabbitmq'
 
 const app = express()
 const PORT = process.env.PORT || 5500
@@ -17,6 +18,7 @@ app.use("/", PostRouter)
 
 export const startServer = async () => {
     await connectDatabase()
+    await connectToQueue()
     app.listen(PORT, () => {
         console.log(`Server is listening on port ${PORT}`)
     })
