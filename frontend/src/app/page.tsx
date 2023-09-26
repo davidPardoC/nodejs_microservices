@@ -1,9 +1,14 @@
-import { Button } from "@/components/ui/button";
+import HomeComponent from "@/components/Home/HomeComponent";
+import { PostsServices } from "@/services/posts.services";
+import { getLogedinUser } from "@/utils/getLogedinUser";
+
+
+export const dynamic = 'force-dynamic'
+
+const postServices = new PostsServices()
 
 export default function Home() {
-  return (
-    <main>
-      <Button className="rounded-full fixed bottom-5 right-5 md:hidden" >New Post +</Button>
-    </main>
-  );
+  const logedInUser = getLogedinUser()
+  const posts = postServices.getAllPosts()
+  return <HomeComponent loggedInUser={logedInUser} />;
 }

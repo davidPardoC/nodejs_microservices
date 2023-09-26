@@ -3,7 +3,7 @@ import axios from "axios";
 
 export class AuthServices {
   async login(credentials: User) {
-    const { data } = await axios.post(
+    const { data } = await axios.post<{ token: string }>(
       "http://localhost:3000/api/auth/login",
       credentials
     );

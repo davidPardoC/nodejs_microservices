@@ -7,10 +7,12 @@ import { config } from './config/config'
 import { errorHandler } from './midlleware/error.handler'
 import { getTokenFromAuthHeader, validateJwt } from './utils/validateJwt'
 import { isPostProtectedRoute } from './utils/protectedRoutes'
+import cors from 'cors';
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
+app.use(cors())
 app.use(json())
 app.use(morgan('common'))
 

@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar/NavBar";
 
 
@@ -18,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="container mx-auto">
-        <NavBar/>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
