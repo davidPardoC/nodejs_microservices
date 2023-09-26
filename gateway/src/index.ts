@@ -25,17 +25,18 @@ app.use(
             return new Promise(async (resolve, reject) => {
                 const { path = '', method = '', headers = {} } = proxyReqOpts
                 if (!isPostProtectedRoute(path as string, method)) {
-                    resolve(proxyReqOpts)
+                    return resolve(proxyReqOpts)
+                    
                 }
                 const token = getTokenFromAuthHeader(
                     headers['authorization'] as string
                 )
                 if (!token) {
-                    reject('Unauthorized')
+                    return reject('Unauthorized')
                 }
                 const payload = await validateJwt(token)
                 headers['x-user-id'] = (payload as any)._id
-                resolve(proxyReqOpts)
+                return resolve(proxyReqOpts)
             })
         },
     })

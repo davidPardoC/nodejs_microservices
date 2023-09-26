@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Button } from "../ui/button";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
+import { NewPost } from "../NewPost/NewPost";
+import { TbLogout } from "react-icons/tb";
 
 const NavBar = () => {
   const user = useContext(AuthContext);
@@ -15,7 +16,7 @@ const NavBar = () => {
           <Link href={"/about"}>About</Link>
         </li>
         <li className="hidden md:block">
-          <Button>New Post +</Button>
+          <NewPost />
         </li>
       </ul>
       <ul className="flex gap-2">
@@ -32,7 +33,10 @@ const NavBar = () => {
         {user && (
           <>
             <li>
-              <Link href={"/"}>Log Out</Link>
+              <Link href={"/"} className="flex">
+                Logout
+                <TbLogout size={"1.5em"} className="ml-2" />
+              </Link>
             </li>
           </>
         )}

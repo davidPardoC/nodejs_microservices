@@ -1,8 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import type { Metadata } from "next";
-import NavBar from "@/components/NavBar/NavBar";
-
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +16,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="container mx-auto">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

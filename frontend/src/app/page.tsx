@@ -2,13 +2,10 @@ import HomeComponent from "@/components/Home/HomeComponent";
 import { PostsServices } from "@/services/posts.services";
 import { getLogedinUser } from "@/utils/getLogedinUser";
 
+const postServices = new PostsServices();
 
-export const dynamic = 'force-dynamic'
-
-const postServices = new PostsServices()
-
-export default function Home() {
-  const logedInUser = getLogedinUser()
-  const posts = postServices.getAllPosts()
-  return <HomeComponent loggedInUser={logedInUser} />;
+export default async function Home() {
+  const logedInUser = getLogedinUser();
+  const posts = await postServices.getAllPosts();
+  return <HomeComponent posts={posts} logedInUser={logedInUser} />;
 }

@@ -1,31 +1,26 @@
 "use client";
 import React, { useContext } from "react";
-import { Button } from "../ui/button";
 import NavBar from "../NavBar/NavBar";
-import { AuthContext, AuthProvider } from "@/context/AuthContext";
+import { AuthContext } from "@/context/AuthContext";
+import { NewPost } from "../NewPost/NewPost";
+import { User } from "@/interfaces/user";
 
 const HomeComponent = ({
-  loggedInUser,
+  posts,
+  logedInUser,
 }: {
-  loggedInUser: { email: string } | undefined;
+  posts: any[];
+  logedInUser: User;
 }) => {
-  return (
-    <AuthProvider initialState={loggedInUser}>
-      <HomeWrapper />
-    </AuthProvider>
-  );
-};
-
-const HomeWrapper = () => {
   const user = useContext(AuthContext);
   return (
     <>
       <NavBar />
       <main>
         {user && (
-          <Button className="rounded-full fixed bottom-5 right-5 md:hidden">
-            New Post +
-          </Button>
+          <div className="fixed bottom-5 right-5 md:hidden">
+            <NewPost />
+          </div>
         )}
       </main>
     </>
