@@ -31,6 +31,7 @@ export const useLogin = (isLogin = true) => {
         const { token } = await authServices.login(data);
         setCookie("token", token, { maxAge: 60 * 6 * 24 });
         router.replace("/");
+        router.refresh()
         return;
       }
       await authServices.signup(data);

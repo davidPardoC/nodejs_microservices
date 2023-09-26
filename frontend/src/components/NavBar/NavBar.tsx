@@ -20,7 +20,7 @@ const NavBar = () => {
         </li>
       </ul>
       <ul className="flex gap-2">
-        {!user && (
+        {!user.email && (
           <>
             <li>
               <Link href={"/login"}>Login</Link>
@@ -30,7 +30,7 @@ const NavBar = () => {
             </li>
           </>
         )}
-        {user && (
+        {user.email && (
           <>
             <li>
               <Link href={"/"} className="flex">

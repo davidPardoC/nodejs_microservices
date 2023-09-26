@@ -4,8 +4,20 @@ import { getLogedinUser } from "@/utils/getLogedinUser";
 
 const postServices = new PostsServices();
 
+export const dynamic = "force-dynamic";
+export const dynamicParams = false;
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
+export const runtime = "nodejs";
+export const preferredRegion = "auto";
+export const maxDuration = 0;
+
 export default async function Home() {
-  const logedInUser = getLogedinUser();
+  console.log("server Logic");
+  const user = getLogedinUser() || { email: "" };
   const posts = await postServices.getAllPosts();
-  return <HomeComponent posts={posts} logedInUser={logedInUser} />;
+  console.log({ posts });
+  return (
+    <HomeComponent posts={posts} logedInUser={user as { email: string }} />
+  );
 }

@@ -1,36 +1,25 @@
-"use client";
 import { User } from "@/interfaces/user";
-import React, { createContext, useState } from "react";
+import React, { createContext, createServerContext, useState } from "react";
 
-export const AuthContext = createContext<{ email: string } | undefined>(
-  undefined
+export const AuthContext = createServerContext<{ email?: string }>(
+  "auth_provider",
+  {}
 );
-export const AuthDispatch = createContext<{ setUser: (user: User) => void }>({
-  setUser: () => {},
-});
 
-export const AuthProvider = async ({
+export const AuthProvider = ({
   children,
   initialState,
 }: {
   children: React.ReactNode;
-  initialState?: { email: string };
+  initialState: { email?: string };
 }) => {
-  const [currentUser, setCurrentUser] = useState<{ email: string } | undefined>(
+  const [currentUser, setCurrentUser] = useState<{ email?: string }>(
     initialState
   );
   const setUser = (user: User) => {
     setCurrentUser(user);
   };
   return (
-    <AuthContext.Provider value={currentUser}>
-      <AuthDispatch.Provider value={{ setUser }}>
-        {children}
-      </AuthDispatch.Provider>
-    </AuthContext.Provider>
+    <AuthContext.Provider value={currentUser}>{children}</AuthContext.Provider>
   );
-};
-
-AuthProvider.getInitialProps = async () => {
-  return { initialState: { email: "pardodavid10@gmail.com" } };
 };
