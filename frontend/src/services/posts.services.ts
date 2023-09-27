@@ -2,7 +2,7 @@ import { Post } from "@/interfaces/post";
 import axios from "axios";
 
 export class PostsServices {
-  async getAllPosts() {
+  async getAllPosts(): Promise<Post[]> {
     const { data: posts } = await axios.get("http://localhost:3000/api/posts");
     return posts;
   }

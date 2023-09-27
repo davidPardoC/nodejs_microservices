@@ -24,6 +24,22 @@ const LoginForm = ({ isLogin = true }: { isLogin: boolean }) => {
       >
         <h1 className="text-4xl text-center mb-5">Blog Microservices</h1>
         <FormField
+          name="username"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder="Username" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display username.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
           name="email"
           control={form.control}
           render={({ field }) => (
@@ -32,9 +48,6 @@ const LoginForm = ({ isLogin = true }: { isLogin: boolean }) => {
               <FormControl>
                 <Input placeholder="Email" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display email.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}

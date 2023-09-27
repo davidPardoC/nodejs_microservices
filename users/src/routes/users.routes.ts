@@ -7,8 +7,8 @@ const userServices = new UserServices(UserModel)
 
 router.post("/", async(req:Request, res:Response, next:NextFunction)=>{
     try {
-        const {email, password} = req.body
-        const createdUser = await userServices.createUser(email, password)
+        const {username, password} = req.body
+        const createdUser = await userServices.createUser(username, password)
         res.json(createdUser)
     } catch (error) {
         next(error)
@@ -35,10 +35,10 @@ router.get("/:id", async (req:Request, res:Response, next:NextFunction)=>{
 })
 
 
-router.get("/email/:email", async (req:Request, res:Response, next:NextFunction)=>{
+router.get("/email/:username", async (req:Request, res:Response, next:NextFunction)=>{
     try {
-     const {email} = req.params
-     const user = await userServices.getUserByEmail(email)
+     const {username} = req.params
+     const user = await userServices.getUserByUsername(username)
      res.json(user)
     } catch (error) {
          next(error)

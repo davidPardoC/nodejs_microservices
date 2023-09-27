@@ -3,17 +3,20 @@ import React, { useContext } from "react";
 import NavBar from "../NavBar/NavBar";
 import { AuthContext, AuthProvider } from "@/context/AuthContext";
 import { NewPost } from "../NewPost/NewPost";
+import { User } from "@/interfaces/user";
+import { isWindow } from "@/utils/utils";
+import { setupClientSideAxiosClient } from "@/utils/axios.client";
+import PostList from "../PostList/PostList";
+import { Post } from "@/interfaces/post";
 
-const HomeComponent = ({ posts }: { posts: any[] }) => {
-  const user = useContext(AuthContext);
+const HomeComponent = ({ posts }: { posts: Post[] }) => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <NavBar />
       <main>
-        <pre>
-          {JSON.stringify(posts)}
-        </pre>
-        {user.email && (
+        <PostList posts={posts} />
+        {user && (
           <div className="fixed bottom-5 right-5 md:hidden">
             <NewPost />
           </div>
@@ -28,8 +31,12 @@ const HomeWrapper = ({
   logedInUser,
 }: {
   posts: any[];
-  logedInUser: { email: string };
+  logedInUser?: User;
 }) => {
+  if (isWindow()) {
+    setupClientSideAxiosClient();
+  }
+
   return (
     <AuthProvider initialState={logedInUser}>
       <HomeComponent posts={posts} />

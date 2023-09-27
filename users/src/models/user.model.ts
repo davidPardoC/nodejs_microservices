@@ -1,13 +1,13 @@
 import { Document, Schema, model } from "mongoose";
 
 export interface UserDoc extends Document{
-    email: string
     password:string
-    postCount: number
+    postCount: number,
+    username: string,
 }
 
 const userSchema = new Schema({
-    email: {type:String, required:true, unique:true},
+    username: {type:String, required:true, unique:true},
     password: {type:String, required:true},
     postCount: {type:Number}
 })

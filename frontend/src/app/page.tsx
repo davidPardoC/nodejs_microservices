@@ -13,11 +13,8 @@ export const preferredRegion = "auto";
 export const maxDuration = 0;
 
 export default async function Home() {
-  console.log("server Logic");
-  const user = getLogedinUser() || { email: "" };
+  const user = getLogedinUser();
   const posts = await postServices.getAllPosts();
-  console.log({ posts });
-  return (
-    <HomeComponent posts={posts} logedInUser={user as { email: string }} />
-  );
+  console.log(posts)
+  return <HomeComponent posts={posts} logedInUser={user} />;
 }

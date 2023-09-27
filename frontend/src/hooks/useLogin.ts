@@ -5,11 +5,9 @@ import * as z from "zod";
 import { useRouter } from "next/navigation";
 import { AuthServices } from "@/services/auth.services";
 import { setCookie } from "cookies-next";
-import { useContext } from "react";
-import jwtDecode from "jwt-decode";
-import { setupClientSideAxiosClient } from "@/utils/axios.client";
 
 const formSchema = z.object({
+  username: z.string().min(2),
   email: z.string().min(2),
   password: z.string().min(10),
 });

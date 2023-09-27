@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { usePost } from "@/hooks/useForm";
+import { usePost } from "@/hooks/usePost";
 import {
   Form,
   FormControl,
@@ -19,19 +19,13 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
 export function NewPost() {
-  const { form, handleSubmit, onCreatePost } = usePost();
-
-  const onDialogOpneChange = (e: boolean) => {
-    if (!e) {
-      form.resetField("title");
-      form.resetField("content");
-    }
-  };
+  const { form, handleSubmit, onCreatePost, openDialog, isOpenDialog } =
+    usePost();
 
   return (
-    <Dialog onOpenChange={onDialogOpneChange}>
+    <Dialog open={isOpenDialog}>
       <DialogTrigger asChild>
-        <Button>New Post +</Button>
+        <Button onClick={openDialog}>New Post +</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

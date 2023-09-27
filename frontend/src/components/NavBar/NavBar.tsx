@@ -5,7 +5,7 @@ import { NewPost } from "../NewPost/NewPost";
 import { TbLogout } from "react-icons/tb";
 
 const NavBar = () => {
-  const user = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <nav className="flex justify-between py-3 items-center">
       <ul className="flex gap-2 items-center">
@@ -15,12 +15,12 @@ const NavBar = () => {
         <li>
           <Link href={"/about"}>About</Link>
         </li>
-        <li className="hidden md:block">
+        <li className="hidden md:block md:ml-3">
           <NewPost />
         </li>
       </ul>
       <ul className="flex gap-2">
-        {!user.email && (
+        {!user && (
           <>
             <li>
               <Link href={"/login"}>Login</Link>
@@ -30,7 +30,7 @@ const NavBar = () => {
             </li>
           </>
         )}
-        {user.email && (
+        {user && (
           <>
             <li>
               <Link href={"/"} className="flex">
