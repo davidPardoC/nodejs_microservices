@@ -40,19 +40,6 @@ const LoginForm = ({ isLogin = true }: { isLogin: boolean }) => {
           )}
         />
         <FormField
-          name="email"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
           name="password"
           control={form.control}
           render={({ field }) => (
