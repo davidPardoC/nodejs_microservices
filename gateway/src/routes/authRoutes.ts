@@ -6,8 +6,8 @@ const authServices = new AuthServices()
 
 router.post("/login", async (req: Request, res: Response, next:NextFunction) => {
     try {
-        const { email, password } = req.body
-        const token = await authServices.loginUser(email, password)
+        const { username, password } = req.body
+        const token = await authServices.loginUser(username, password)
         res.json(token)
     } catch (error) {
         next(error)

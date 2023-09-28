@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { useContext } from "react";
-import { AuthContext } from "@/context/AuthContext";
 import { NewPost } from "../NewPost/NewPost";
 import { TbLogout } from "react-icons/tb";
+import { getLogedinUser } from "@/utils/getLogedinUser";
 
 const NavBar = () => {
-  const { user } = useContext(AuthContext);
+  const user = getLogedinUser();
   return (
     <nav className="flex justify-between py-3 items-center">
       <ul className="flex gap-2 items-center">

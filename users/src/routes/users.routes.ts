@@ -35,7 +35,7 @@ router.get("/:id", async (req:Request, res:Response, next:NextFunction)=>{
 })
 
 
-router.get("/email/:username", async (req:Request, res:Response, next:NextFunction)=>{
+router.get("/username/:username", async (req:Request, res:Response, next:NextFunction)=>{
     try {
      const {username} = req.params
      const user = await userServices.getUserByUsername(username)

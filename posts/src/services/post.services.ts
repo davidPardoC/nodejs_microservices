@@ -10,16 +10,29 @@ export class PostServices {
         return this.postRepository.find()
     }
 
-    async createPost(content: string, title: string, userId: string) {
+    async createPost(
+        content: string,
+        title: string,
+        userId: string,
+        username: string
+    ) {
         const createdPost = await this.postRepository.save({
             content,
             title,
             author: userId,
+            authorName: username,
         })
         rabbitChanel.sendToQueue(
             QueueEnums.POST_CRATED,
             Buffer.from(JSON.stringify({ userId }))
         )
         return createdPost
+    }
+
+    async getPostsByUsername(username: string) {
+        const posts = await this.postRepository.find({
+            where: { authorName: username },
+        })
+        return posts
     }
 }

@@ -11,7 +11,7 @@ export const connectToQueue = async () => {
         console.log('Connected to RabbitMQ queue')
         rabbitChanel.assertQueue(QueueEnums.POST_CRATED)
         rabbitChanel.consume(QueueEnums.POST_CRATED, onPostCreated, {
-            noAck: true, 
+            noAck: true,
         })
     } catch (error) {
         console.log(error)

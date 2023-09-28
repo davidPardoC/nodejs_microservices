@@ -7,6 +7,14 @@ export class PostsServices {
     return posts;
   }
 
+  async getPpostByUsername(username: string) {
+    const { data: posts } = await axios.get(
+      `http://localhost:3000/api/posts/username/${username}`
+    );
+    console.log(posts)
+    return posts;
+  }
+
   async createPosts(data: Post) {
     const { data: posts } = await axios.post(
       "http://localhost:3000/api/posts",

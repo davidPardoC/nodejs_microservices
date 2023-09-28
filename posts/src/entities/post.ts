@@ -1,17 +1,26 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm'
 
 @Entity()
-export class Post{
+export class Post {
     @PrimaryGeneratedColumn()
-    id:number
+    id: number
 
     @Column()
-    author:string
+    author: string
 
-    @Column({unique: true})
-    title:string
+    @Column()
+    authorName: string
 
-    @Column({type:'text'})
+    @Column({ unique: true })
+    title: string
+
+    @Column({ type: 'text' })
     content: string
 
     @CreateDateColumn()

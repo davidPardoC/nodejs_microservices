@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 export class AuthServices {
     async loginUser(email:string, password:string){
-        const { data: user } = await axios.get<{email:string, password:string}>(`${config.usersMsUrl}/email/${email}`)
+        const { data: user } = await axios.get<{email:string, password:string}>(`${config.usersMsUrl}/username/${email}`)
         if (!(await this.isValidPassword(password, user.password))){
             throw new Error("Unauthorized")
         }
