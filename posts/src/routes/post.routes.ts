@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from 'express'
 import { AppDataSource } from '../database/postgres'
 import { Post } from '../entities/post'
 import { PostServices } from '../services/post.services'
-import { decodeJWT } from '../midlewares/decodeJwt.midlldeware'
+import { decodeJWT } from '../midlewares/decodeJwt'
 
 const router = Router()
 
