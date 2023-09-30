@@ -3,13 +3,13 @@ import axios from "axios";
 
 export class PostsServices {
   async getAllPosts(): Promise<Post[]> {
-    const { data: posts } = await axios.get("http://localhost:3000/api/posts");
+    const { data: posts } = await axios.get("http://localhost/api/posts");
     return posts;
   }
 
   async getPpostByUsername(username: string) {
     const { data: posts } = await axios.get(
-      `http://localhost:3000/api/posts/username/${username}`
+      `http://localhost/api/posts/username/${username}`
     );
     console.log(posts)
     return posts;
@@ -17,7 +17,7 @@ export class PostsServices {
 
   async createPosts(data: Post) {
     const { data: posts } = await axios.post(
-      "http://localhost:3000/api/posts",
+      "http://localhost/api/posts",
       data
     );
     return posts;

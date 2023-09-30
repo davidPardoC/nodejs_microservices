@@ -9,7 +9,7 @@ router.get('', async (_: Request, res: Response) => {
 })
 
 router.post(
-    'login',
+    '/login',
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { username, password } = req.body
