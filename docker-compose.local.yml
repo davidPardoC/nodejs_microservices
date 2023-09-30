@@ -1,6 +1,16 @@
 version: '3.2'
 
 services:
+  nginx:
+    image: nginx
+    container_name: api_gateway
+    ports:
+      - 80:80
+    volumes:
+      - ./apigateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    
   mongo:
     container_name: mongo_local_db
     image: mongo
