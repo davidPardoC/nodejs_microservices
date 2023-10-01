@@ -1,0 +1,110 @@
+{
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "version": 3,
+  "name": "KrakenD - API Gateway",
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "extra_config": {
+    "telemetry/logging": {
+      "level": "WARNING",
+      "syslog": true,
+      "stdout": true
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "/api/users",
+      "output_encoding": "no-op",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "method": "GET",
+          "host": ["http://host.docker.internal:3001"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/users/{user_id}",
+      "output_encoding": "no-op",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/{user_id}",
+          "method": "GET",
+          "host": ["http://host.docker.internal:3001"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/users",
+      "output_encoding": "no-op",
+      "method": "POST",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "method": "POST",
+          "host": ["http://host.docker.internal:3001"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/users/username/{username}",
+      "output_encoding": "no-op",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/username/{username}",
+          "method": "GET",
+          "host": ["http://host.docker.internal:3001"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/posts",
+      "output_encoding": "no-op",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "method": "GET",
+          "host": ["http://host.docker.internal:3002"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/posts",
+      "output_encoding": "no-op",
+      "method": "POST",
+      "input_headers": ["*"],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "HS256",
+          "disable_jwk_security": true,
+          "operation_debug": true,
+          "cache": false,
+          "jwk_url": "http://host.docker.internal:3003/public/symetrics.json"
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/",
+          "method": "POST",
+          "host": ["http://host.docker.internal:3002"]
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/auth/login",
+      "output_encoding": "no-op",
+      "method": "POST",
+      "backend": [
+        {
+          "url_pattern": "/login",
+          "method": "POST",
+          "host": ["http://host.docker.internal:3003"]
+        }
+      ]
+    }
+  ]
+}

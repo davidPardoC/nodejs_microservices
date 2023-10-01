@@ -24,8 +24,7 @@ router.post(
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { content, title } = req.body
-            const userId = req.get('x-user-id') as string
-            const { username } = res.locals.user
+            const { username, _id: userId } = res.locals.user
             const posts = await postServices.createPost(
                 content,
                 title,
