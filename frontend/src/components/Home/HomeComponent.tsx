@@ -5,9 +5,9 @@ import PostList from "../PostList/PostList";
 import { Post } from "@/interfaces/post";
 import { getLogedinUser } from "@/utils/getLogedinUser";
 
-const user = getLogedinUser();
 
 const HomeComponent = ({ posts }: { posts: Post[] }) => {
+  const user = getLogedinUser();
   return (
     <>
       <NavBar />

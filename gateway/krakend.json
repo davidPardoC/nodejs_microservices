@@ -107,6 +107,19 @@
       ]
     },
     {
+      "endpoint": "/api/posts/username/{username}",
+      "output_encoding": "no-op",
+      "method": "GET",
+      "input_headers": ["*"],
+      "backend": [
+        {
+          "url_pattern": "/username/{username}",
+          "method": "GET",
+          "host": ["http://host.docker.internal:3002"]
+        }
+      ]
+    },
+    {
       "endpoint": "/api/auth/login",
       "output_encoding": "no-op",
       "method": "POST",

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NewPost } from "../NewPost/NewPost";
 import { TbLogout } from "react-icons/tb";
 import { getLogedinUser } from "@/utils/getLogedinUser";
+import { LogoutButton } from "../Logout/Logout";
 
 const NavBar = () => {
   const user = getLogedinUser();
@@ -32,10 +33,7 @@ const NavBar = () => {
         {user && (
           <>
             <li>
-              <Link href={"/"} className="flex">
-                Logout
-                <TbLogout size={"1.5em"} className="ml-2" />
-              </Link>
+              <LogoutButton/>
             </li>
           </>
         )}
