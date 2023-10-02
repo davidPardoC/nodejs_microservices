@@ -31,5 +31,5 @@ export const usePost = () => {
     setOpenDialog(true);
   };
 
-  return { form, handleSubmit, onCreatePost, openDialog, isOpenDialog };
+  return { form, handleSubmit, onCreatePost, setOpenDialog, isOpenDialog };
 };

@@ -22,7 +22,7 @@ import { useLayoutEffect } from "react";
 import { setupClientSideAxiosClient } from "@/utils/axios.client";
 
 export function NewPost() {
-  const { form, handleSubmit, onCreatePost, openDialog, isOpenDialog } =
+  const { form, handleSubmit, onCreatePost, setOpenDialog, isOpenDialog } =
     usePost();
 
     useLayoutEffect(()=>{
@@ -30,12 +30,13 @@ export function NewPost() {
     },[])
 
     return (
-    <Dialog open={isOpenDialog}>
+    <Dialog open={isOpenDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger asChild>
-        <Button onClick={openDialog}>New Post +</Button>
+        <Button>New Post +</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
+      <DialogContent 
+       className="sm:max-w-[425px]">
+        <DialogHeader >
           <DialogTitle>Add new post</DialogTitle>
         </DialogHeader>
         <Form {...form}>
