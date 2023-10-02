@@ -12,7 +12,7 @@ export class AuthServices {
 
   async signup(credentials: User) {
     const { data } = await axios.post(
-      "http://localhost/api/users/",
+      "http://localhost/api/users",
       credentials
     );
     return data;

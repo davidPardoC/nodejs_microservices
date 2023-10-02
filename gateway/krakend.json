@@ -5,6 +5,18 @@
   "timeout": "3000ms",
   "cache_ttl": "300s",
   "extra_config": {
+    "security/cors": {
+      "debug": true,
+      "allow_origins": [
+        "*"
+      ],
+      "expose_headers": ["Authorization", "Content-Type"],
+      "allow_headers": ["Authorization", "Content-Type"],
+      "allow_methods": ["DELETE", "POST", "GET", "HEAD", "OPTIONS", "PATCH", "PUT"]
+    },
+    "router": {
+      "auto_options": true
+    },
     "telemetry/logging": {
       "level": "WARNING",
       "syslog": true,
@@ -12,6 +24,18 @@
     }
   },
   "endpoints": [
+    {
+      "endpoint": "/api/users",
+      "output_encoding": "no-op",
+      "method": "POST",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "method": "POST",
+          "host": ["http://host.docker.internal:3001"]
+        }
+      ]
+    },
     {
       "endpoint": "/api/users",
       "output_encoding": "no-op",
@@ -32,18 +56,6 @@
         {
           "url_pattern": "/{user_id}",
           "method": "GET",
-          "host": ["http://host.docker.internal:3001"]
-        }
-      ]
-    },
-    {
-      "endpoint": "/api/users",
-      "output_encoding": "no-op",
-      "method": "POST",
-      "backend": [
-        {
-          "url_pattern": "/",
-          "method": "POST",
           "host": ["http://host.docker.internal:3001"]
         }
       ]

@@ -14,9 +14,9 @@ const NavBar = () => {
         <li>
           <Link href={"/about"}>About</Link>
         </li>
-        <li className="hidden md:block md:ml-3">
+        {user && <li className="hidden md:block md:ml-3">
           <NewPost />
-        </li>
+        </li>}
       </ul>
       <ul className="flex gap-2">
         {!user && (

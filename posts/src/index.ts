@@ -5,6 +5,7 @@ import { PostRouter } from './routes/post.routes'
 import { connectDatabase } from './database/postgres'
 import { connectToQueue } from './queue/rabbitmq'
 import morgan from 'morgan'
+import { errorHandler } from './midlewares/errorHanlder'
 
 const app = express()
 const PORT = process.env.PORT || 5500
@@ -17,6 +18,8 @@ app.get("/status", (_, res:Response)=>{
 })
 
 app.use("/", PostRouter)
+
+app.use(errorHandler)
 
 export const startServer = async () => {
     await connectDatabase()

@@ -3,7 +3,10 @@ import {getCookie} from "cookies-next"
 
 export const setupClientSideAxiosClient = () => {
   const token = getCookie("token")
-  if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  }
+  axios.interceptors.request.use((config)=>{
+    config.headers["Authorization"] = `Bearer ${token}`
+    return config
+  }, (error)=>{
+    return Promise.reject(error)
+  })
 };

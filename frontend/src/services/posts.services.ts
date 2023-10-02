@@ -1,5 +1,8 @@
 import { Post } from "@/interfaces/post";
 import axios from "axios";
+import { getCookie } from "cookies-next";
+
+const token = getCookie("token")
 
 export class PostsServices {
   async getAllPosts(): Promise<Post[]> {

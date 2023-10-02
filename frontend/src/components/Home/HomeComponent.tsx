@@ -1,9 +1,6 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import { NewPost } from "../NewPost/NewPost";
-import { User } from "@/interfaces/user";
-import { isWindow } from "@/utils/utils";
-import { setupClientSideAxiosClient } from "@/utils/axios.client";
 import PostList from "../PostList/PostList";
 import { Post } from "@/interfaces/post";
 import { getLogedinUser } from "@/utils/getLogedinUser";

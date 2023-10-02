@@ -18,12 +18,18 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { useLayoutEffect } from "react";
+import { setupClientSideAxiosClient } from "@/utils/axios.client";
 
 export function NewPost() {
   const { form, handleSubmit, onCreatePost, openDialog, isOpenDialog } =
     usePost();
 
-  return (
+    useLayoutEffect(()=>{
+      setupClientSideAxiosClient()
+    },[])
+
+    return (
     <Dialog open={isOpenDialog}>
       <DialogTrigger asChild>
         <Button onClick={openDialog}>New Post +</Button>

@@ -3,13 +3,11 @@ import { authRouter } from './routes'
 import morgan from 'morgan'
 import 'dotenv/config'
 import { errorHandler } from './midlleware/error.handler'
-import cors from 'cors'
 import path from 'path'
 
 const app = express()
 const PORT = process.env.PORT || 3003
 
-app.use(cors())
 app.use(json())
 app.use(morgan('common'))
 
