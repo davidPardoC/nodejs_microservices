@@ -1,10 +1,10 @@
-FROM node:16.17.0
+FROM node:18
 
 COPY package*.json .
 
 RUN npm ci
 
-COPY . .
+COPY ./posts .
 
 ENV PORT 3000
 

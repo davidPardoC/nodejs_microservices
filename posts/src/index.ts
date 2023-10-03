@@ -1,11 +1,11 @@
 import express, { Response, json } from 'express'
 import "dotenv/config"
-import "reflect-metadata"
 import { PostRouter } from './routes/post.routes'
 import { connectDatabase } from './database/postgres'
 import { connectToQueue } from './queue/rabbitmq'
 import morgan from 'morgan'
 import { errorHandler } from './midlewares/errorHanlder'
+import "reflect-metadata"
 
 const app = express()
 const PORT = process.env.PORT || 5500

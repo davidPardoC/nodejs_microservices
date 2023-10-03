@@ -4,7 +4,7 @@ COPY package*.json .
 
 RUN npm ci
 
-COPY ./users .
+COPY ./auth .
 
 ENV PORT 3000
 

@@ -4,6 +4,8 @@ import { Post } from "../entities/post";
 
 const isDevelopment = process.env.NODE_ENV !== "production"
 
+console.log("process variables -> ", process.env.POSTGRES_HOST, process.env.POSTGRES_PORT)
+
 export const AppDataSource = new DataSource({
     type:'postgres',
     host: process.env.POSTGRES_HOST,

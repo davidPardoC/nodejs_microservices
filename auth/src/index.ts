@@ -19,7 +19,7 @@ app.use(errorHandler)
 
 export const startServer = () => {
     app.listen(PORT, () => {
-        console.log(`Gateway is listening on port ${PORT}`)
+        console.log(`Auth service is listening on port ${PORT}`)
     })
 }
 

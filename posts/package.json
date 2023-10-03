@@ -1,5 +1,5 @@
 {
-  "name": "backend-nodejs-typescript-mongodb-boilerplate",
+  "name": "posts_ms",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,17 +12,9 @@
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/davidPardoC/backend-nodejs-typescript-mongoDB-boilerplate.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/davidPardoC/backend-nodejs-typescript-mongoDB-boilerplate/issues"
-  },
-  "homepage": "https://github.com/davidPardoC/backend-nodejs-typescript-mongoDB-boilerplate#readme",
   "devDependencies": {
   },
   "dependencies": {
