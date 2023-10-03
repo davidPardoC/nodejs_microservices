@@ -11,3 +11,4 @@ Simple microservices architecture built with:
 - Next.Js
 
 ## Architecture Diagram
+![architecture diagram](https://github.com/davidPardoC/nodejs_microservices/blob/main/resources/arcuitecture_diagram.png?raw=true)
