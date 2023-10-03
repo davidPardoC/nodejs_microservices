@@ -5,5 +5,9 @@ Simple microservices architecture built with:
 - Node.js
 - Express.js
 - MongoDB
-- POstgreSQL
+- PostgreSQL
 - RabbitMQ
+- KrakenD
+- Next.Js
+
+## Architecture Diagram
